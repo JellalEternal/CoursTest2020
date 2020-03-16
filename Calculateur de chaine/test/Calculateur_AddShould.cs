@@ -24,7 +24,6 @@ namespace CalculateurChaine.Tests
             Assert.Equal(expected,result);
         }
 
-
         [Theory]
         [InlineData("1", 1)]
         [InlineData("2", 2)]
@@ -46,7 +45,7 @@ namespace CalculateurChaine.Tests
         [InlineData("2,5", 7)]
         [InlineData("125,143", 268)]
         [InlineData("135,1", 136)]
-        public void 
+        public void
             ReturnAddition_WhenSendTwoNumber(string value, int expected)
         {
             //Arrange
@@ -90,5 +89,49 @@ namespace CalculateurChaine.Tests
             Assert.Equal(expected, result);
         }
 
+        [Theory]
+        [InlineData("//;\n1;2;3", 6)]
+        [InlineData("//|\n1|2|3|4", 10)]
+        [InlineData("//+\n125+143+1", 269)]
+        public void ReturnAddition_WhenSendMultipleNumberWithCustomSeparator(string value, int expected)
+        {
+            //Arrange
+
+            //Act
+            int result = calculateur.Add(value);
+
+            //Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("//;\n1;2;1001", 3)]
+        [InlineData("1,2,3,1001", 6)]
+        [InlineData("125\n143,1001", 268)]
+        public void ReturnAddition_WithoutGreaterThan1000Values(string value, int expected)
+        {
+            //Arrange
+
+            //Act
+            int result = calculateur.Add(value);
+
+            //Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("//;;;\n1;;;2;;;3", 6)]
+        [InlineData("//||\n1||2||3||4", 10)]
+        [InlineData("//+++++\n125+++++143+++++1", 269)]
+        public void ReturnAddition_WhenSendMultipleNumberWithMultipleCharactersCustomSeparator(string value, int expected)
+        {
+            //Arrange
+
+            //Act
+            int result = calculateur.Add(value);
+
+            //Assert
+            Assert.Equal(expected, result);
+        }
     }
 }

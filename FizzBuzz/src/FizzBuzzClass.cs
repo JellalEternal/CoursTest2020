@@ -6,20 +6,17 @@ namespace FizzBuzzImpl
     {
         public string FizzBuzz(int number)
         {
-            if (number % 5 == 0 && number % 3 == 0)
+            string result = string.Empty;
+            if (number % 3 == 0)
             {
-                return "FizzBuzz";
+                result += "Fizz";
             }
             if (number % 5 == 0)
             {
-                return "Buzz";
-            }
-            if (number  % 3 == 0)
-            {
-                return "Fizz";
+                result +="Buzz";
             }
 
-            return number.ToString();
+            return string.IsNullOrEmpty(result) ? number.ToString() : result;
         }
     }
 }
