@@ -23,8 +23,9 @@ namespace CalculateurChaine
                 separators = new[] { matches.Groups[1].Value };
                 workingNumbers = matches.Groups[2].Value;
             }
-
+            
             var numberTab = workingNumbers.Split(separators, StringSplitOptions.None);
+          
             int nombre = 0;
             foreach(string number in numberTab)
             {
@@ -33,9 +34,9 @@ namespace CalculateurChaine
                 {
                     parseNumber = int.Parse(number);
                 }
-                catch (FormatException formatException)
+                catch (FormatException ex)
                 {
-                    throw new EspaceException();    
+                    throw new EspaceException("j'ai catché l'exception", ex);
                 }
 
                 nombre += parseNumber > 1000 ? 0: parseNumber;
