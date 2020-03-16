@@ -133,5 +133,16 @@ namespace CalculateurChaine.Tests
             //Assert
             Assert.Equal(expected, result);
         }
+        
+        
+        [Fact]
+        public void ThrowEspaceException_WhenHaveTwoDelimitorSequence()
+        {
+            //Arrange
+            string value = "1,\n";
+            
+            //Act
+            Assert.Throws<EspaceException>(() => calculateur.Add(value));
+        }
     }
 }

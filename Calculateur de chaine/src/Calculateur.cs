@@ -28,7 +28,16 @@ namespace CalculateurChaine
             int nombre = 0;
             foreach(string number in numberTab)
             {
-                var parseNumber = int.Parse(number);
+                int parseNumber;
+                try
+                {
+                    parseNumber = int.Parse(number);
+                }
+                catch (FormatException formatException)
+                {
+                    throw new EspaceException();    
+                }
+
                 nombre += parseNumber > 1000 ? 0: parseNumber;
             }
             return nombre;                
