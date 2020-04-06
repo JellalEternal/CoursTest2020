@@ -13,9 +13,6 @@ namespace Minify.Controllers
         [HttpPost]
         public string Add([FromBody] MinifyData data)
         {
-            MongoRepository mongoRepository = new MongoRepository();
-            data.Key = "aaa";
-            mongoRepository.Add(data);
             return string.Empty;
         }
 
