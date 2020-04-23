@@ -8,7 +8,8 @@ namespace Minify.Controllers
     public class RedirectController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get()
+        [Route("/redirect/{id}")]
+        public IActionResult Get(string id)
         {
             return Redirect("https://www.google.com");
         }

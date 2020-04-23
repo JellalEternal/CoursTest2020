@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,7 +20,11 @@ namespace Minify.Controllers
         [HttpGet]
         public IEnumerable<MinifyData> Get()
         {
-            return new MinifyData[0];
+            return new []{
+                new MinifyData{
+                    Key = Guid.NewGuid().ToString(),
+                    Url = "https://www.google.com"
+                }            };
         }
 
         [HttpDelete("{id}")]
